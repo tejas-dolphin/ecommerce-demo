@@ -1,0 +1,31 @@
+[
+    {      
+      "id": 1,
+      "image":"https://rukminim1.flixcart.com/image/312/312/kfzq8i80/mobile/w/s/2/samsung-galaxy-f41-sm-f415fzkdins-original-imafwbnvxuhzvtpv.jpeg?q=70",
+      "brand":"samsung",
+      "mrp": "30000"
+      
+    },
+    {      
+      "id": 2,
+      "image":"https://rukminim1.flixcart.com/image/312/312/kckud8w0/mobile/y/k/w/realme-6-rmx2001-original-imaftzgfyrnaj9wb.jpeg?q=70",
+      "brand":"realme",
+      "mrp": "20000"
+      
+    },
+    {      
+      "id": 3,
+      "image":"https://rukminim1.flixcart.com/image/416/416/jnj7iq80/mobile/y/q/d/apple-iphone-xr-mry52hn-a-original-imafa6zkfgwpnsgz.jpeg?q=70",
+      "brand": "apple",
+      "mrp": "50000"
+      
+    },
+    {      
+      "id": 4,
+      "image":"https://rukminim1.flixcart.com/image/416/416/jnj7iq80/mobile/y/q/d/apple-iphone-xr-mry52hn-a-original-imafa6zkfgwpnsgz.jpeg?q=70",
+      "brand": "apple",
+      "mrp": "80000"
+      
+    }
+   
+]    
