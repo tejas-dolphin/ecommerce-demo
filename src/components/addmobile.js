@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {createnewdata} from '../redux/action'
+import axios from 'axios'
 
 
 function Addmobile() {
@@ -15,12 +16,41 @@ function Addmobile() {
 
     const submitdata=(e)=>{
         e.preventDefault();
-        //console.log(id,brand,mrp,image);
-        const data={id,brand,mrp,image};
+       
+       /* const data={id,image,brand,mrp};
         console.log(data);
-        dispatch(createnewdata(data)) 
-      // history.push("/aaa")  
+        */
+
+       let formdata=new FormData();
+        formdata.append('id',id)
+        formdata.append('image',image)
+        formdata.append('brand',brand)
+        formdata.append('mrp',mrp)
+        console.log(formdata);  
+        dispatch(createnewdata(formdata))  
+
+
+
+        // await axios.post("http://localhost:4000/home",formdata)
+        // .then(res=>{            
+        //        console.log(res);
+        //  })
+        //  .catch(err=>{
+        //    console.log(err)
+        //  })
+    
+      
      
+    }
+    const imagehandler=(e)=>{
+       /* let file=e.target.files;
+        let reader=new FileReader();
+        reader.readAsDataURL(file[0])
+        reader.onload=(e)=>{
+           // console.log("image",e.target.result);
+            setimage(e.target.result)
+        }*/
+        setimage(e.target.files[0])
     }
 
  
@@ -45,11 +75,11 @@ function Addmobile() {
                     
                     <div className="custom-file">
 
-                        <input type="file" className="custom-file-input " onChange={(e)=>setimage(e.target.files[0]) } required />
+                        <input type="file" className="custom-file-input " onChange={imagehandler} required />
                         <label className="custom-file-label" htmlFor="image">Choose file...</label>
     </div>
                     <div className="form-group mt-3">
-                        <button className="btn btn-primary mr-3" onClick={()=>history.push('/')}>Back To Home</button>
+                        <button className="btn btn-primary mr-3" onClick={()=>history.push('/home')}>Back To Home</button>
                         <input type="submit" className="btnSubmit btn btn-primary" value="Add Mobile" />
                     </div>
                 </div>

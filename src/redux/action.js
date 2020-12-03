@@ -1,6 +1,7 @@
 import {add_data} from "../redux/type"
 import {get_data} from "../redux/type"
 import {create_newdata} from "../redux/type"
+import {post_signup} from "../redux/type"
 import axios from 'axios';
 
 
@@ -35,6 +36,19 @@ export const getdata = () =>{
   }
   
 };
+
+export const postsignup = (data) => {
+  return  async (dispatch) => {   
+    const result = await axios.post("http://localhost:4000/signup",data);
+    dispatch({
+      type: post_signup,
+      payload: result.data,
+    });
+}
+};
+
+
+
 
 /*export const createnewdata = (data) => {
   return  {

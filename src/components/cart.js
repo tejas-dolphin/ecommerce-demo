@@ -9,7 +9,7 @@ function Cart() {
     let dispatch=useDispatch()
     let cart=[]
     const backtohome = () => {
-        history.push("/")
+        history.push("/home")
         dispatch(adddata(cart))
     }
     if (cartdata[0] === null) {

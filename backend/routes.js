@@ -13,8 +13,10 @@ const storage =multer.diskStorage({
 const upload=multer({storage:storage});
 
 router.get('/',async(req,res)=>{
+    const tablename="flipkartdata";
     try {
-        const data= await Client.query("select * from flipkartdata");
+        
+        const data= await Client.query(`select * from ${tablename}`);
         res.json(data.rows)
         
     } catch (error) {
@@ -30,6 +32,7 @@ router.post('/',upload.single('image'),async(req,res)=>{
         const image=req.file.path;
         const brand=req.body.brand;
         const mrp=req.body.mrp
+      
         const data= await Client.query("insert into flipkartdata values($1,$2,$3,$4)",[id,image,brand,mrp]);
         data
         .save()

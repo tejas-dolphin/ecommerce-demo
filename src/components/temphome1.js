@@ -12,7 +12,7 @@ function Temphome1(){
    
    
     useEffect(() => {
-history.push('/')
+history.push('/home')
         //dispatch(getdata())         
         },[])  
 
