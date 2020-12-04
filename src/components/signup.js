@@ -1,9 +1,8 @@
 import React,{useState} from "react";
 import {Link ,useHistory} from "react-router-dom";
-import {useDispatch} from 'react-redux'
+import {useDispatch,useSelector} from 'react-redux'
 import {postsignup} from '../redux/action'
 import axios from'axios';
-
 
 function Signup(){
     const [user,setUser]=useState({       
@@ -11,13 +10,13 @@ function Signup(){
         email:'',      
         password:''
 
-    });
+    });  
     let history=useHistory();
     let dispatch=useDispatch();
+    //let [message,setmessage]=useState( useSelector(msg=>msg.signupdata))
+    //console.log(message);
     const onInputchange= (e) =>{
-
-        setUser({...user,[e.target.name]:e.target.value});     
-        
+        setUser({...user,[e.target.name]:e.target.value});             
     };
     
     const submithandler=async(e)=>{
@@ -27,22 +26,25 @@ function Signup(){
             email:user.email,
             password:user.password
         }
-        dispatch(postsignup(data));
-        
-       /*await axios.post("http://localhost:4000/signup",data)
+      // dispatch(postsignup(data));
+      // 
+      // console.log(message);
+      //await alert(message.message);
+      // if(message.message==="User created")
+      // history.push('/')
+      // 
+       await axios.post("http://localhost:4000/signup",data)
            .then(res=>{
                
                alert(res.data.message);
-                history.push('/')
+               if(res.data.message==="User created")
+               history.push('/')             
                
            })
            .catch(err=>{
                alert(err)
-           })*/
-
-
-    }
-
+           })
+    }   
     return(
 <>
 
@@ -57,7 +59,6 @@ function Signup(){
                         <div className="form-group">
                             <input type="email" className="form-control" placeholder="Your Email *" value={user.email} name="email" onChange={onInputchange} required />
                         </div>
-
                         
                         <div className="form-group">
                             <input type="password" className="form-control" placeholder="Your Password *" value={user.password} name="password" onChange={onInputchange} required />

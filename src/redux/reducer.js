@@ -2,12 +2,14 @@ import { add_data } from "../redux/type"
 import { get_data } from "../redux/type"
 import { create_newdata } from "../redux/type"
 import { post_signup } from "../redux/type"
+import {login_data} from "../redux/type"
 import db from "../db.json";
 
 const initialstate = {
     data: [],
     cart: [],
-    signupdata: []
+    signupdata: [],
+    logindata:[]
 
 }
 
@@ -18,6 +20,11 @@ export const reducer = (state = initialstate, action) => {
                 ...state,
                 cart: action.payload
             }
+            case login_data:
+                return {
+                    ...state,
+                    logindata: action.payload
+                }
         case create_newdata:
             return {
                 ...state,

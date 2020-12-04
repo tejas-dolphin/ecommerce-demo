@@ -2,6 +2,8 @@ import React,{useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link} from "react-router-dom";
 import { useHistory} from "react-router-dom";
+import {useDispatch} from 'react-redux'
+import {logindata} from '../redux/action'
 import axios from "axios";
 
 function Signin() {
@@ -10,19 +12,13 @@ function Signin() {
         password:''
 
     });
-   
-    
+   let dispatch=useDispatch();    
     const history=useHistory();
-
     const onInputchange= (e) =>{
-
-        setUser({...user,[e.target.name]:e.target.value});     
-        
+        setUser({...user,[e.target.name]:e.target.value});             
     };
-    const Submithandler=async(e)=>{
-       
-        e.preventDefault();
-      
+    const Submithandler=async(e)=>{       
+        e.preventDefault();      
         const data1={            
             email:user.email,
             password:user.password
@@ -31,14 +27,13 @@ function Signin() {
         
         await axios.post("http://localhost:4000/signin",data1)
             .then(res=>{
-                
-               alert(res.data.message);
               
-               if(res.data.message==="Auth successful"){              
-                  
-                  
+               if(res.data!==""){
+                dispatch(logindata(res.data));
                    history.push("/home");
                }
+               if(res.data.message==='Auth failed')
+               alert(res.data.message)
             })
             .catch(err=>{
                 alert(err)

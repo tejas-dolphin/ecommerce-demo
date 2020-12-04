@@ -18,16 +18,14 @@ router.post('/',async (req, res) => {
         bcrypt.compare(req.body.password, data.rows[0].password, (err, result) => {
             if (err) {
             
-                return res.json({
+                 return res.json({
                     message: 'Auth failed'
+                 
                 });
+              
             }
             if (result) {
-
-                return res.json({
-                    message: 'Auth successful',
-
-                });
+                return res.send(data.rows)
             }
             res.json({
                 message: 'Auth failed'
@@ -39,8 +37,4 @@ router.post('/',async (req, res) => {
         res.send(err);
     };
 });
-
-
-
-
 module.exports = router;

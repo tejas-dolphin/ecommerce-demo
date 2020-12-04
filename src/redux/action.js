@@ -2,6 +2,7 @@ import {add_data} from "../redux/type"
 import {get_data} from "../redux/type"
 import {create_newdata} from "../redux/type"
 import {post_signup} from "../redux/type"
+import {login_data} from "../redux/type"
 import axios from 'axios';
 
 
@@ -48,6 +49,17 @@ export const postsignup = (data) => {
 };
 
 
+
+
+export const logindata = (data) => {
+  return  {
+   
+      type: login_data,
+      payload:data,
+ 
+}
+
+};
 
 
 /*export const createnewdata = (data) => {
