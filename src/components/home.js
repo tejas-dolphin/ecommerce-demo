@@ -5,13 +5,13 @@ import { adddata } from '../redux/action'
 import { getdata } from '../redux/action'
 import { useHistory } from 'react-router-dom'
 
-function Home() {
+function Home(){
     const data1 = useSelector(value => value.data);
     const dispatch = useDispatch();
     // const data1=useSelector(value=>value.data);     
     const [data, setdata] = useState(data1);
     // const data=data1
-    console.log("api", data1, "data", data);
+   // console.log("api", data1, "data", data);
     const [dbdata, setdbdata] = useState(data);
     const [cartcounter, setcartcounter] = useState(0)
     // const [cart, setcart] = useState()
@@ -43,13 +43,12 @@ function Home() {
             dbdata.map(value => {
                 if (chkboxvlu === value.brand) {
                     chkboxfltr = dbdata.filter(data => (data.brand === chkboxvlu))
-                    console.log(chkboxfltr);
+                   // console.log(chkboxfltr);
                     setdbdata(chkboxfltr)
                 }
             })
         }
     }, [chkboxvlu])
-
     const textboxvluhandlar = (e) => {
         settextboxvlu({ ...textboxvlu, [e.target.name]: e.target.value });
         //console.log(textboxvlu)

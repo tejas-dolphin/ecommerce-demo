@@ -14,6 +14,18 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/:id', async (req, res) => {
+    const tablename = "signup";
+    try {
+        const data = await Client.query(`select * from ${tablename}`)
+        res.json(data.rows)
+    } catch (error) {
+        res.send(error);
+    }
+})
+
+
+
 router.post("/", async (req, res) => {
     const data = await Client.query("select email from signup where email=($1)", [req.body.email])
     if (data.rows.length >= 1) {

@@ -4,9 +4,9 @@ import { getdata } from '../redux/action'
 import {useHistory} from 'react-router-dom'
 
 function Temphome1(){
-    const dispatch = useDispatch();
-    const data= useSelector(value=>value.data); 
-    console.log(data);
+  // const dispatch = useDispatch();
+  // const data= useSelector(value=>value.data); 
+  // console.log(data);
 
     let history=useHistory();
    
