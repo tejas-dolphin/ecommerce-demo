@@ -24,12 +24,12 @@ function App() {
       <div className="App">
         <Router>
         
-          <Route  exact path="/home" component={Home} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/" component={Signin} />
           <Route exact path="/aaa" component={Temphome1} />
           <Route exact path="/add" component={Addmobile} />
-          <Route exact path="/cart" component={Cart} />
+          <Route exact path="/cart/:name" component={Cart} />
          
         </Router>
       </div>

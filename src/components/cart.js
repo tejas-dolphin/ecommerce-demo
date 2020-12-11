@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory,useParams } from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
 import { adddata } from '../redux/action'
 import axios from 'axios'
@@ -14,23 +14,25 @@ function Cart() {
         history.push("/home")
         dispatch(adddata(cart))
     }  
+    const {name}=useParams();
 
     useEffect(()=>{
         lodadata();
+       
     },[])
-    const lodadata=async()=>{
-        const id=logindata[0].id;
-        const cartdata1=await axios.get("http://localhost:4000/signup")
-        console.log(cartdata);
-        console.log(cartdata1.data,id);
-
+    const lodadata=async()=>{      
+        const cartdata1=await axios.get("http://localhost:4000/signup/"+name)        
+      
+       let tempvalue=cartdata1.data[0];
+       console.log(tempvalue)       
+        //let arr=Object.entries(tempvalue)
+       // console.log(arr);
     }
-    const submitcartdata=async()=>{      
-        
+    const submitcartdata=async()=>{              
         const id=logindata[0].id;
-        let cart=JSON.stringify(cartdata);
-        const data={id,cart}
-     
+        let cart=cartdata;
+        console.log(cart);     
+        const data={id,cart}     
         await axios.put("http://localhost:4000/cart",data)
         .then(res=>{
             alert(res.data.message)

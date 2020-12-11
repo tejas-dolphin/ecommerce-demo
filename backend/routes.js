@@ -29,7 +29,7 @@ router.post('/',upload.single('image'),async(req,res)=>{
     try {
         //console.log(req.file);
         const id=req.body.id;
-        const image=req.file.path;
+        const image="http://localhost:4000/"+req.file.path;
         const brand=req.body.brand;
         const mrp=req.body.mrp
       

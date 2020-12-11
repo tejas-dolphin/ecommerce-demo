@@ -14,10 +14,11 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/:id', async (req, res) => {
-    const tablename = "signup";
+router.get('/:name', async (req, res) => {
+  const name=req.params.name
     try {
-        const data = await Client.query(`select * from ${tablename}`)
+        const data = await Client.query("select cart from signup where name=($1)",[name])
+        
         res.json(data.rows)
     } catch (error) {
         res.send(error);
