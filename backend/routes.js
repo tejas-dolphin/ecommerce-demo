@@ -2,6 +2,8 @@ const express = require('express');
 const multer = require('multer');
 const router = express.Router();
 const Client = require('../backend/module');
+const checkauth=require('./middleware/jwtauthentication')
+
 const storage =multer.diskStorage({
     destination:function(req,file,cb){
         cb(null,'./uploads')
@@ -14,8 +16,7 @@ const upload=multer({storage:storage});
 
 router.get('/',async(req,res)=>{
     const tablename="flipkartdata";
-    try {
-        
+    try {        
         const data= await Client.query(`select * from ${tablename}`);
         res.json(data.rows)
         
@@ -33,7 +34,7 @@ router.post('/',upload.single('image'),async(req,res)=>{
         const brand=req.body.brand;
         const mrp=req.body.mrp
       
-        const data= await Client.query("insert into flipkartdata values($1,$2,$3,$4)",[id,image,brand,mrp]);
+        const data= await Client.query("insert into flipkartdata(image,brand,mrp) values($1,$2,$3)",[image,brand,mrp]);
         data
         .save()
         .then(() => {

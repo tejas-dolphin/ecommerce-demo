@@ -27,10 +27,12 @@ function Signin() {
         
         await axios.post("http://localhost:4000/signin",data1)
             .then(res=>{
+             
               
-               if(res.data!==""){
-                dispatch(logindata(res.data));
-                   history.push("/home");
+               if(res.data.message==='Auth success'){
+                alert(res.data.message)
+                localStorage.setItem("token",res.data.token)
+                  history.push("/home");
                }
                if(res.data.message==='Auth failed')
                alert(res.data.message)

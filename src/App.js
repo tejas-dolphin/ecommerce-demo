@@ -29,7 +29,7 @@ function App() {
           <Route exact path="/" component={Signin} />
           <Route exact path="/aaa" component={Temphome1} />
           <Route exact path="/add" component={Addmobile} />
-          <Route exact path="/cart/:name" component={Cart} />
+          <Route exact path="/cart" component={Cart} />
          
         </Router>
       </div>

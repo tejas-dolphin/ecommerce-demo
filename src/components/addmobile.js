@@ -22,7 +22,7 @@ function Addmobile() {
         */
 
        let formdata=new FormData();
-        formdata.append('id',id)
+        
         formdata.append('image',image)
         formdata.append('brand',brand)
         formdata.append('mrp',mrp)
@@ -60,10 +60,6 @@ function Addmobile() {
             <form onSubmit={submitdata}>
                 <div className="col-md-6">
                     <h3>Add New Mobile</h3>
-                    <div className="form-group">
-                        <label htmlFor="id">Enter Mobile Id</label>
-                        <input type="number" className="form-control" placeholder="Enter Mobile Id " value={id} onChange={(e)=>setid(e.target.value)} required />
-                    </div>
                     <div className="form-group">
                         <label htmlFor="brand">Enter Mobile Brand</label>
                         <input type="text" className="form-control" placeholder="Enter Mobile Brand" value={brand} onChange={(e)=>setbrand(e.target.value)} required />

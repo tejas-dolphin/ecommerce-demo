@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 
 function Home(){
     const data1 = useSelector(value => value.data);
-    console.log(data1);
+   
     const dispatch = useDispatch();
     // const data1=useSelector(value=>value.data);     
     const [data, setdata] = useState(data1);
@@ -22,8 +22,8 @@ function Home(){
         fromdata: "",
         todata: ""
     })
-    let logindata=useSelector(value=>value.logindata)
-    let logindatavalue=logindata[0].name;
+    //  let logindata=useSelector(value=>value.logindata)
+   //let logindatavalue=logindata[0].name;
     const history = useHistory();
     const [cart, setcart] = useState(useSelector(value => value.cart))
     useEffect(() => {
@@ -31,7 +31,7 @@ function Home(){
        
     }, [])
     useEffect(() => {
-      console.log("temp",data1);
+      
       setdbdata(data1)
        
     }, [data1])
@@ -82,7 +82,6 @@ function Home(){
         }
     }
     dispatch(adddata(cart))
-
     return (
         <div className="container ">
             <div className="p-1 mb-2 bg-primary text-white ">
@@ -93,7 +92,7 @@ function Home(){
                     <div className="col">
                         <div className="float-right">
                             <label className="mr-3" htmlFor="cartcounter">{cartcounter}</label>
-                            <Link to={`/cart/${logindatavalue}`}>
+                            <Link to={`/cart`}>
                                 <button type="submit" className="mr-5 btn btn-outline-light">View Cart</button>
                             </Link>
                         </div>
